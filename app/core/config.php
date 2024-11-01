@@ -1,16 +1,45 @@
 <?php
 
-if ($_SERVER['SERVER_NAME'] == 'localhost') {
+function loadEnv($path)
+{
+    if (!file_exists($path)) {
+        throw new Exception('.env file not found');
+    }
 
-    define('ROOT', 'http://localhost/MVC/public');
-} else {
-    define('ROOT', 'http://remed.com');
+    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos(trim($line), '#') === 0) {
+            continue;
+        }
+
+        list($name, $value) = explode('=', $line, 2);
+        $name = trim($name);
+        $value = trim($value);
+
+        if (!array_key_exists($name, $_SERVER) && !array_key_exists($name, $_ENV)) {
+            putenv(sprintf('%s=%s', $name, $value));
+            $_ENV[$name] = $value;
+            $_SERVER[$name] = $value;
+        }
+    }
 }
 
-define('DBHOST', 'localhost');
-define('DBUSER', 'root');
-define('DBPASS', '');
-define('DBNAME', 'asset');
+// Load environment variables from .env file
+loadEnv(__DIR__ . '/../../.env');
+
+if ($_SERVER['SERVER_NAME'] == 'localhost') {
+    define('ROOT', 'http://localhost/MVC/public');
+} else {
+    define('ROOT', 'http://example.com');
+}
+
+define('DBHOST', getenv('DB'));
+define('DBUSER', getenv('DBUSER'));
+define('DBPASS', getenv('DBPASS'));
+define('DBNAME', getenv('DBNAME'));
+
+define('APP_NAME', "MVC Framework");
+define('APP_DESC', "A simple MVC Framework");
 
 // true means debug mode on
 define('DEBUG', true);

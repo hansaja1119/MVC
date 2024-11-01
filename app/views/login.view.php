@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Signup</title>
+    <title>Login</title>
 
 
 </head>
@@ -16,14 +16,14 @@
     <main class="form-signin">
         <form method="post">
 
-            <!-- alert errors -->
             <?php if (!empty($errors)): ?>
                 <div class="alert alert-danger">
                     <?= implode("<br>", $errors) ?>
                 </div>
             <?php endif; ?>
 
-            <h1 class="h3 mb-3 fw-normal">Create account</h1>
+            <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
             <div class="form-floating">
                 <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
@@ -36,12 +36,12 @@
 
             <div class="checkbox mb-3">
                 <label>
-                    <input name="terms" type="checkbox" value="1"> Accept terms
+                    <input type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Create</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
             <a href="<?= ROOT ?>">Home</a>
-            <a href="<?= ROOT ?>/login">Login</a>
+            <a href="<?= ROOT ?>/signup">Signup</a>
         </form>
     </main>
 
