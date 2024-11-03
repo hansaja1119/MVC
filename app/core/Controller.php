@@ -16,4 +16,9 @@ trait Controller
             require_once("../app/views/404.view.php");
         }
     }
+
+    // first pass the path of the view relative to view folder(ex: authenticate/login) 
+    // and then the data which has to passed for that view
+    // if the view is not found then 404.view.php will be loaded
+    // Usage: $this->view('subfolder/viewname', $data);
 }

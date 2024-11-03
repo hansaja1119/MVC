@@ -47,14 +47,10 @@ This is a simple MVC (Model-View-Controller) framework built with PHP. It provid
    If you are using Apache, you can set up a virtual host for your project. Here is an example configuration:
 
    ```apache
-   <VirtualHost *:80>
-       ServerName localhost
-       DocumentRoot "C:/xampp/htdocs/MVC/public"
-       <Directory "C:/xampp/htdocs/MVC/public">
-           AllowOverride All
-           Require all granted
-       </Directory>
-   </VirtualHost>
+      <Directory />
+         AllowOverride All
+         Require all denied
+      </Directory>
    ```
 
    Make sure to restart your web server after making these changes.
@@ -69,11 +65,15 @@ This is a simple MVC (Model-View-Controller) framework built with PHP. It provid
    mvc/
    ├── app/
    │   ├── controllers/
+   │   │   ├── admin/
+   │   │   ├── user/
    │   ├── core/
    │   │   ├── config.php
    │   │   ├── init.php
    │   ├── models/
    │   ├── views/
+   │       ├── admin/
+   │       ├── user/
    ├── public/
    │   ├── index.php
    │   ├── assets/
@@ -154,7 +154,7 @@ To add a new page to your application, follow these steps:
        use Controller;
        public function index()
        {
-           $this->view('about', $data);
+           $this->view('user/about', $data);
        }
    }
    ```
