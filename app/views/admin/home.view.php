@@ -20,8 +20,8 @@
                 <h3 class="float-md-start mb-0">Cover</h3>
                 <nav class="nav nav-masthead justify-content-center float-md-end">
                     <a class="nav-link active" aria-current="page" href="<?= ROOT ?>">Home</a>
-                    <a class="nav-link" href="<?= ROOT ?>/login">Login</a>
-                    <a class="nav-link" href="<?= ROOT ?>/logout">Logout</a>
+                    <a class="nav-link" href="<?= ROOT ?>/admin/login">Login</a>
+                    <a class="nav-link" href="<?= ROOT ?>/admin/logout">Logout</a>
                 </nav>
             </div>
         </header>

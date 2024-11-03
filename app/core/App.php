@@ -46,6 +46,8 @@ class App
             }
         }
 
+        // read the url and pass the remaining parts as arguments to the method
+        // If no method is specified, default to 'index'
         call_user_func_array([$controller, $this->method], $URL);
     }
 }

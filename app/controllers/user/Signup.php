@@ -18,6 +18,6 @@ class Signup
         }
 
 
-        $this->view('signup', $data);
+        $this->view('user/signup', $data);
     }
 }

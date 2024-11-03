@@ -26,6 +26,6 @@ class Login
             $data['errors'] = $user->errors;
         }
 
-        $this->view('login', $data);
+        $this->view('admin/login', $data);
     }
 }

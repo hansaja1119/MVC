@@ -18,7 +18,7 @@ class Home
 
         $data['username'] = empty($_SESSION['USER']) ? 'User' : $_SESSION['USER']->email;
 
-        $this->view('home', $data);
+        $this->view('user/home', $data);
     }
 
     // add other methods like edit, update, delete, etc.
