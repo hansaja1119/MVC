@@ -5,8 +5,13 @@ trait Database
     private function connect()
     {
         $string = "mysql:host=" . DBHOST . ";dbname=" . DBNAME;
-        $con = new PDO($string, DBUSER, DBPASS);
-        return $con;
+        try {
+            $con = new PDO($string, DBUSER, DBPASS);
+            $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $con;
+        } catch (PDOException $e) {
+            die("Database connection failed: " . $e->getMessage());
+        }
     }
 
     public function query($query, $data = [])

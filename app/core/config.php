@@ -33,7 +33,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
     define('ROOT', 'http://example.com');
 }
 
-define('DBHOST', getenv('DB'));
+define('DBHOST', getenv('DBHOST'));
 define('DBUSER', getenv('DBUSER'));
 define('DBPASS', getenv('DBPASS'));
 define('DBNAME', getenv('DBNAME'));

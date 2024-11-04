@@ -5,8 +5,7 @@ class User
     use Model;
 
     protected $table = 'users';
-
-    protected $allowedColumns = ['email', 'password'];
+    protected $allowedColumns = ['email', 'password', 'token'];
 
     public function validate($data)
     {
@@ -26,5 +25,17 @@ class User
             return true;
         }
         return false;
+    }
+
+    public function getUserByEmail($email)
+    {
+        $data = ['email' => $email];
+        return $this->first($data);
+    }
+
+    public function updateToken($email, $token)
+    {
+        $data = ['token' => $token];
+        $this->update($email, $data, 'email');
     }
 }

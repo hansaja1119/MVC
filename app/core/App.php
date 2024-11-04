@@ -15,13 +15,16 @@ class App
     public function loadController()
     {
         $URL = $this->splitURL();
+        // Remove the public folder from the URL
+        unset($URL[0]);
+        $URL = array_values($URL); // Reindex the array
 
         // Determine if the URL contains 'admin'
         $isAdmin = false;
         if (!empty($URL[0]) && strtolower($URL[0]) === 'admin') {
             $isAdmin = true;
             unset($URL[0]);
-            $URL = array_values($URL); // Reindex the array
+            $URL = array_values($URL);
         }
 
         // Check if the controller exists and select it
